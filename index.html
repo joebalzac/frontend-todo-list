@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/dist/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | Todo app</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="header__section">
+          <h2 class="header__title">TODO</h2>
+          <img class="header__sun" src="/images/icon-sun.svg" alt="sun-icon" />
+        </div>
+      </header>
+      <div class="todo">
+        <div class="todo__wrapper" onclick="addTask()">
+          <div id="checkmark"></div>
+        </div>
+        <input
+          type="text"
+          name="input"
+          id="input"
+          ~
+          placeholder="Create a new todo..."
+          value=""
+        />
+        <div class="todo-space"></div>
+      </div>
+    </div>
+  </body>
+</html>

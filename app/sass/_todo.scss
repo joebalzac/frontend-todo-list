@@ -1,0 +1,39 @@
+.todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding-right: 100px;
+  margin: 0 auto;
+  width: 400px;
+  height: 50%;
+  background-color: $darkDesaturated;
+  border-radius: 5px;
+  bottom: -50%;
+  z-index: 5;
+
+  #checkmark {
+    border-radius: 50%;
+    border: 1px solid $lightGrayish;
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+  }
+
+  #checkmark:focus {
+    outline: none;
+    background: url("/images/icon-check.svg");
+  }
+
+  #input {
+    background: $darkDesaturated;
+    color: $lightGrayish;
+    border: none;
+    padding: 16px 25px;
+    font-size: 18px;
+  }
+
+  #input:focus {
+    outline: none;
+  }
+}
