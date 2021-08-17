@@ -91,7 +91,7 @@ body {
   outline: none;
 }
 
-.todo__filters__sides {
+.todo__filters {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -105,5 +105,15 @@ body {
 [data-theme="darkTheme"] .todo__header {
   background-color: #25273d;
   border: 1px solid #393a4b;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
 }
 /*# sourceMappingURL=style.css.map */
