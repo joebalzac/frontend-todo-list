@@ -1,0 +1,19 @@
+.main__container {
+  width: 100vw;
+  min-height: 100vh;
+  background: url("/images/bg-desktop-light.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+[data-theme="dark-theme"] .main__container {
+  background: url("../img/bg-desktop-dark.jpg");
+  background-color: #171823;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

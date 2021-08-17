@@ -1,96 +1,109 @@
+.main__container {
+  width: 100vw;
+  min-height: 100vh;
+  background: url("/images/bg-desktop-light.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+[data-theme="dark-theme"] .main__container {
+  background: url("../img/bg-desktop-dark.jpg");
+  background-color: #171823;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
   font-family: "Josefin Sans", sans-serif;
   font-weight: 400px;
-  background-color: #161722;
-}
-
-.header {
-  background: url("/images/bg-desktop-dark.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 50%;
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-.header__section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 50px;
-}
-
-.header__title {
-  color: #fff;
-  text-align: center;
-  letter-spacing: 10px;
-}
-
-.header__sun {
-  height: 20px;
 }
 
 .todo {
-  display: -webkit-box;
-  display: -ms-flexbox;
+  width: 100%;
+  max-width: 540px;
+}
+
+.todo .logo {
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  padding-right: 100px;
-  margin: 0 auto;
-  width: 400px;
-  height: 50%;
-  background-color: #25273c;
-  border-radius: 5px;
-  bottom: -50%;
-  z-index: 5;
+  justify-content: space-between;
+  align-items: center;
+  margin: 7rem 0 0 0;
 }
 
-.todo #checkmark {
-  border-radius: 50%;
-  border: 1px solid #e4e5f1;
-  height: 15px;
-  width: 15px;
-  cursor: pointer;
+.todo .logo__title {
+  color: #fff;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: 15px;
 }
 
-.todo #checkmark:focus {
-  outline: none;
-  background: url("/images/icon-check.svg");
-}
-
-.todo #input {
-  background: #25273c;
-  color: #e4e5f1;
+.todo .logo .btn--theme {
+  background-color: transparent;
   border: none;
-  padding: 16px 25px;
-  font-size: 18px;
 }
 
-.todo #input:focus {
+.todo__header {
+  width: 100%;
+  background-color: #fff;
+  padding: 32px 36px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin-top: 4.8rem;
+  margin-bottom: 2.4rem;
+  border: 1px solid #e3e4f1;
+}
+
+.todo__header label {
+  position: absolute;
+  left: -25vw;
+}
+
+.todo__circle, .todo__check {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  border: 1px solid #e3e4f1;
+  background: transparent;
+}
+
+.todo__input {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  margin-left: 2rem;
+  flex: 1 0;
+}
+
+.todo__input:focus {
   outline: none;
+}
+
+.todo__filters__sides {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+[data-theme="darkTheme"] .todo__input {
+  color: inherit;
+}
+
+[data-theme="darkTheme"] .todo__header {
+  background-color: #25273d;
+  border: 1px solid #393a4b;
 }
 /*# sourceMappingURL=style.css.map */

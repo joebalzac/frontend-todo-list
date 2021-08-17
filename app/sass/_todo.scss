@@ -1,39 +1,78 @@
 .todo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  padding-right: 100px;
-  margin: 0 auto;
-  width: 400px;
-  height: 50%;
-  background-color: $darkDesaturated;
-  border-radius: 5px;
-  bottom: -50%;
-  z-index: 5;
+  width: 100%;
+  max-width: 540px;
 
-  #checkmark {
+  .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 7rem 0 0 0;
+
+    &__title {
+      color: #fff;
+      font-weight: bold;
+      font-size: 32px;
+      line-height: 32px;
+      letter-spacing: 15px;
+    }
+
+    .btn--theme {
+      background-color: transparent;
+      border: none;
+    }
+  }
+
+  &__header {
+    width: 100%;
+    background-color: #fff;
+    padding: 32px 36px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-top: 4.8rem;
+    margin-bottom: 2.4rem;
+    border: 1px solid #e3e4f1;
+
+    label {
+      position: absolute;
+      left: -25vw;
+    }
+  }
+
+  &__circle,
+  &__check {
+    height: 24px;
+    width: 24px;
     border-radius: 50%;
-    border: 1px solid $lightGrayish;
-    height: 15px;
-    width: 15px;
-    cursor: pointer;
+    border: 1px solid #e3e4f1;
+    background: transparent;
   }
 
-  #checkmark:focus {
-    outline: none;
-    background: url("/images/icon-check.svg");
-  }
-
-  #input {
-    background: $darkDesaturated;
-    color: $lightGrayish;
+  &__input {
+    background: transparent;
     border: none;
-    padding: 16px 25px;
     font-size: 18px;
+    margin-left: 2rem;
+    flex: 1 0;
   }
 
-  #input:focus {
+  &__input:focus {
     outline: none;
   }
+
+  &__filters__sides {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+[data-theme="darkTheme"] .todo__input {
+  color: inherit;
+}
+
+[data-theme="darkTheme"] .todo__header {
+  background-color: #25273d;
+  border: 1px solid #393a4b;
 }
