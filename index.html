@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/dist/style.css" />
+    <link
+      rel="icon"
+      type="img/png"
+      sizes="32x32"
+      href="./img/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Todo app</title>
+  </head>
+  <body class="preload-transitions" data-theme="darkTheme">
+    <div class="container">
+      <div class="todo">
+        <header class="todo__header">
+          <section class="logo">
+            <h2 class="todo__title">TODO</h2>
+            <button class="btn btn--theme" id="theme-toggle">
+              <img
+                class="todo__elem--hide"
+                src="./images/icon-moon.svg"
+                alt="moon icon to apply dark mode"
+              />
+              <img
+                src="./images/icon-sun.svg"
+                alt="sun icon to apply light mode"
+              />
+            </button>
+          </section>
+          <div class="todo__header">
+            <div class="todo__circle"></div>
+            <label for="todo-input">Create a new todo</label>
+            <input
+              type="text"
+              class="todo__input"
+              name="todo-input"
+              id="todo-input"
+              placeholder="Create a new todo..."
+            />
+          </div>
+        </header>
+
+        <main class="main">
+          <ul class="todo__list" id="todo-list">
+            <!-- items added by JavaScript -->
+          </ul>
+          <div class="todo__filters">
+            <div class="todo__filters__sides">
+              <p class="btn"><span id="items-left">5</span> item(s) left</p>
+              <button class="btn btn--clear" id="clear-completed">
+                Clear Completed
+              </button>
+            </div>
+            <div class="todo__filters__center">
+              <input
+                type="radio"
+                name="filter"
+                id="all"
+                value="all"
+                class="btn btn--bold"
+                checked
+              />
+              <label class="btn btn--bold" for="all">All</label>
+
+              <input
+                type="radio"
+                name="filter"
+                id="active"
+                value="active"
+                class="btn btn--bold"
+              />
+              <label class="btn btn--bold" for="active">Active</label>
+
+              <input
+                type="radio"
+                name="filter"
+                id="completed"
+                value="completed"
+                class="btn btn--bold"
+              />
+              <label class="btn btn--bold" for="completed">Completed</label>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
