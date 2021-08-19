@@ -108,6 +108,7 @@ body {
 [data-theme="dark-theme"] .todo__input {
   background: #25273c;
   color: #e4e5f1;
+  border: none;
 }
 
 .todo__input:focus {
@@ -127,19 +128,32 @@ body {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+[data-theme="dark-theme"] .todo__filters__sides {
+  background: #25273c;
+  color: #e4e5f1;
+  border: none;
+}
+
 .todo__filters__center {
   background: white;
   padding: 1.9rem 1.4rem;
   display: inline-block;
   position: relative;
   border-bottom: 1px solid #e4e5f1;
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   left: 50%;
   transform: translate(-50%, -100%);
 }
 
 .todo__filters__center input {
   display: none;
+}
+
+[data-theme="dark-theme"] .todo__filters__center {
+  background: #25273c;
+  color: #e4e5f1;
+  border-bottom: none;
 }
 
 .todo__elem--hide {
