@@ -1,3 +1,9 @@
+const todoInput = document.querySelector("#todo-input");
+const todoList = document.querySelector("#todo-list");
+const itemsLeft = document.querySelector("#items-left");
+const todoFilters = document.querySelectorAll("input[name='filter']");
+const btnClear = document.querySelector("#clear-completed");
+
 const themeSwitch = document.querySelector("#theme-toggle");
 const themeLogos = document.querySelectorAll(".btn--theme img");
 
