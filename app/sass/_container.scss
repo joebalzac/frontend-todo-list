@@ -1,19 +1,25 @@
 .main__container {
-  width: 100vw;
-  min-height: 100vh;
   background: url("/images/bg-desktop-light.jpg");
   background-repeat: no-repeat;
   background-size: contain;
+  height: 100vh;
+  width: 100vw;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   position: relative;
 }
 
-[data-theme="dark-theme"] .main__container {
-  background: url("../img/bg-desktop-dark.jpg");
-  background-color: #171823;
-  background-repeat: no-repeat;
-  background-size: contain;
+.btn {
+  border: none;
+}
+
+.btn--theme {
+  background: transparent;
+  border: none;
+}
+
+.btn--clear {
+  background: transparent;
+  border: none;
 }
