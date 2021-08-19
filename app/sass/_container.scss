@@ -10,16 +10,7 @@
   position: relative;
 }
 
-.btn {
-  border: none;
-}
-
-.btn--theme {
-  background: transparent;
-  border: none;
-}
-
-.btn--clear {
-  background: transparent;
-  border: none;
+[data-theme="dark-theme"] .main__container {
+  background: url("/images/bg-desktop-dark.jpg") no-repeat;
+  background-size: contain;
 }

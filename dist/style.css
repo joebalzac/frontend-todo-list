@@ -10,18 +10,9 @@
   position: relative;
 }
 
-.btn {
-  border: none;
-}
-
-.btn--theme {
-  background: transparent;
-  border: none;
-}
-
-.btn--clear {
-  background: transparent;
-  border: none;
+[data-theme="dark-theme"] .main__container {
+  background: url("/images/bg-desktop-dark.jpg") no-repeat;
+  background-size: contain;
 }
 
 * {
@@ -34,9 +25,9 @@ body {
   font-family: "Josefin Sans", sans-serif;
 }
 
-[data-theme="dark-theme"] body {
+[data-theme="dark-theme"] {
   color: #e4e5f1;
-  background: #161722;
+  background-color: #161722;
 }
 
 .btn {
@@ -95,6 +86,11 @@ body {
   left: -25vw;
 }
 
+[data-theme="dark-theme"] .todo__header {
+  background: #25273c;
+  color: #e4e5f1;
+}
+
 .todo__circle, .todo__check {
   height: 24px;
   width: 24px;
@@ -107,6 +103,11 @@ body {
   border: none;
   font-size: 18px;
   margin-left: 16px;
+}
+
+[data-theme="dark-theme"] .todo__input {
+  background: #25273c;
+  color: #e4e5f1;
 }
 
 .todo__input:focus {
@@ -138,6 +139,10 @@ body {
 }
 
 .todo__filters__center input {
+  display: none;
+}
+
+.todo__elem--hide {
   display: none;
 }
 /*# sourceMappingURL=style.css.map */

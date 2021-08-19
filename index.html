@@ -11,19 +11,19 @@
     <link rel="stylesheet" href="/dist/style.css" />
     <title>Front End Mentor - Todo List</title>
   </head>
-  <body data-theme="dark-theme">
+  <body class="preload-transitions" data-theme="">
     <div class="main__container">
       <div class="todo">
         <header class="header">
           <section class="logo">
             <h2 class="logo__title">Todo</h2>
-            <button class="btn btn--theme">
+            <button class="btn btn--theme" id="theme-toggle">
+              <img src="/images/icon-moon.svg" alt="symbol of the moon" />
               <img
-                src="/images/icon-moon.svg"
-                alt="symbol of the moon"
-                class="todo_elem--hide"
+                class="todo__elem--hide"
+                src="/images/icon-sun.svg"
+                alt="symbol of the sun"
               />
-              <img src="/images/icon-sun.svg" alt="symbol of the sun" />
             </button>
           </section>
           <div class="todo__header">
@@ -87,4 +87,5 @@
       </div>
     </div>
   </body>
+  <script src="/app/js/script.js"></script>
 </html>

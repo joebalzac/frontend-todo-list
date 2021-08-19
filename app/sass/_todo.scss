@@ -33,6 +33,11 @@
     }
   }
 
+  [data-theme="dark-theme"] &__header {
+    background: $darkDesaturated;
+    color: $lightGrayish;
+  }
+
   &__circle,
   &__check {
     height: 24px;
@@ -46,6 +51,11 @@
     border: none;
     font-size: 18px;
     margin-left: 16px;
+  }
+
+  [data-theme="dark-theme"] &__input {
+    background: $darkDesaturated;
+    color: $lightGrayish;
   }
 
   &__input:focus {
@@ -81,5 +91,9 @@
         display: none;
       }
     }
+  }
+
+  &__elem--hide {
+    display: none;
   }
 }
