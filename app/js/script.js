@@ -49,8 +49,10 @@ function addTodoElem(todoText) {
   <p>${todoText}</p><button class="btn todo__delete"><img src="/images/icon-cross.svg" /></button>`;
   todoList.appendChild(todoEl);
 
+  if (){
   const todoDelete = todoEl.querySelector(".todo__delete");
   todoDelete.addEventListener("click", () => {
     todoList.remove(todoEl);
   });
+}
 }
