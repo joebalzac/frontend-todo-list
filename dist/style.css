@@ -98,6 +98,10 @@ body {
   border: 1px solid #9394a5;
 }
 
+.todo__check:focus {
+  background: linear-gradient(#57ddff, #c058f3);
+}
+
 .todo__input {
   background: transparent;
   border: none;
@@ -173,7 +177,18 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
+  background-color: white;
+  border-bottom: 1px solid #e3e4f1;
   padding: 2rem 2.4rem;
-  background: #fff;
+}
+
+.todo__elem p {
+  flex: 1;
+  margin-left: 2rem;
+}
+
+[data-theme="dark-theme"] .todo__elem {
+  background: #25273c;
+  color: #e4e5f1;
 }
 /*# sourceMappingURL=style.css.map */

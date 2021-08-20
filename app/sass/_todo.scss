@@ -46,6 +46,10 @@
     border: 1px solid $darkGrayishBlue;
   }
 
+  &__check:focus {
+    background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  }
+
   &__input {
     background: transparent;
     border: none;
@@ -124,7 +128,18 @@
     width: 100%;
     display: flex;
     align-items: center;
+    background-color: white;
+    border-bottom: 1px solid #e3e4f1;
     padding: 2rem 2.4rem;
-    background: #fff;
+
+    p {
+      flex: 1;
+      margin-left: 2rem;
+    }
+  }
+
+  [data-theme="dark-theme"] &__elem {
+    background: $darkDesaturated;
+    color: $lightGrayish;
   }
 }
