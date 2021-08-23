@@ -131,7 +131,16 @@
     p {
       flex: 1;
       margin-left: 2rem;
+      text-decoration: none;
     }
+  }
+
+  &__elem--checked &__check {
+    background: linear-gradient(to right, #55ddff, #c058f3);
+  }
+
+  &__elem--checked p {
+    text-decoration: line-through;
   }
 
   [data-theme="dark-theme"] &__elem {

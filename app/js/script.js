@@ -2,18 +2,34 @@
 
 let todoArray = [];
 let todoId = 0;
-let isActive;
+let currentFilter = "all";
+const LOCAL_TODOS = "local_todos";
 
 const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
 const itemsLeft = document.querySelector("#items-left");
 const todoFilters = document.querySelectorAll("input[name='filter']");
-const clearCompleted = document.querySelector("#clearCompleted");
+const btnClear = document.querySelector("#clearCompleted");
 
 const themeToggle = document.querySelector("#theme-toggle");
 const themeLogo = document.querySelectorAll(".btn--theme img");
 
 /************EVENT LISTENERS*************/
+
+btnClear.addEventListener("click", () => {
+  const toRemove = todoArray.filter((obj) => obj.active === false);
+
+  if (
+    toRemove.length > 0 &&
+    confirm(
+      `You are about to remove ${toRemove.length} completed task. Are  you sure?`
+    )
+  ) {
+    toRemove.forEach((elem) => {
+      removeElem(elem.DOMelem);
+    });
+  }
+});
 
 themeToggle.addEventListener("click", themeSwitcher);
 
@@ -25,8 +41,14 @@ todoInput.addEventListener("keyup", (e) => {
       todoInput.value = "";
 
       //if filter is on, refresh the display of todo elems regarding the active filter
+      refreshFilters();
     }
   }
+});
+
+todoFilters.forEach((filter) => {
+  //event listener on radio button change that controls the filters
+  filter.addEventListener("change", filterCallback);
 });
 
 /*****FUNCTIONS******/
@@ -42,6 +64,40 @@ function themeSwitcher(e) {
   }
 }
 
+function filterCallback(e) {
+  //update the current Filter and calls function that takes care of filters
+  currentFilter = e.target.value;
+  refreshFilters();
+}
+
+function refreshFilters() {
+  if (currentFilter === "completed") {
+    completedCB();
+  } else if (currentFilter === "all") {
+    allCB();
+  } else {
+    //if active
+    activeCB();
+  }
+}
+
+//check all items in array and chose to display add or remove class that displays the elems if it is active or not
+function completedCB() {
+  todoArray.forEach(function (arrayObj) {
+    if (
+      !arrayObj.active &&
+      arrayObj.DOMelem.classList.contains("todo__elem--hide")
+    ) {
+      arrayObj.DOMelem.classList.remove("todo__elem--hide");
+    } else if (
+      arrayObj.active &&
+      !arrayObj.DOMelem.classList.contains("todo__elem--hide")
+    ) {
+      arrayObj.DOMelem.classList.add("todo__elem--hide");
+    }
+  });
+}
+
 function changeActiveStatus(elem) {
   //  toggle the check class on elements and the set active variable in the element array to correct value
   elem.classList.toggle("todo__elem--checked");
@@ -50,6 +106,12 @@ function changeActiveStatus(elem) {
   if (elem.classList.contains("todo__elem--checked")) {
     isActive = false;
   }
+
+  todoArray.forEach((arrayObj) => {
+    if (arrayObj.id === +elem.id) arrayObj.active = isActive;
+  });
+
+  // reflect changes on the global variable in the localStorage and update active element count
 }
 
 function addTodoElem(todoText, isNew = true) {
@@ -80,8 +142,6 @@ function addTodoElem(todoText, isNew = true) {
   });
 
   //Add checkmark to the item from the list
-  const todoCheck = document.querySelector("todo__check");
+  const todoCheck = document.querySelector(".todo__check");
   todoCheck.addEventListener("click", changeActiveStatus);
 }
-
-console.log(changeActiveStatus);

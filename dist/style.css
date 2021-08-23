@@ -181,6 +181,15 @@ body {
 .todo__elem p {
   flex: 1;
   margin-left: 2rem;
+  text-decoration: none;
+}
+
+.todo__elem--checked .todo__check {
+  background: linear-gradient(to right, #55ddff, #c058f3);
+}
+
+.todo__elem--checked p {
+  text-decoration: line-through;
 }
 
 [data-theme="dark-theme"] .todo__elem {
