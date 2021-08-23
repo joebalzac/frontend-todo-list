@@ -1,6 +1,8 @@
 /*****GLOBAL VARIABLES*****/
 
+let todoArray = [];
 let todoId = 0;
+let isActive;
 
 const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
@@ -15,7 +17,7 @@ const themeLogo = document.querySelectorAll(".btn--theme img");
 
 themeToggle.addEventListener("click", themeSwitcher);
 
-todoInput.addEventListener("keyup", (e) => {
+todoInput.addEventListener("keyup", e => {
   if (e.key === "Enter") {
     if (e.target.value !== "") {
       // event listener adds a todo elem on key press
@@ -31,7 +33,7 @@ todoInput.addEventListener("keyup", (e) => {
 
 function themeSwitcher(e) {
   console.log(e.target);
-  themeLogo.forEach((logo) => logo.classList.toggle("todo__elem--hide"));
+  themeLogo.forEach(logo => logo.classList.toggle("todo__elem--hide"));
 
   if (!document.body.dataset.theme) {
     document.body.dataset.theme = "dark-theme";
@@ -40,7 +42,17 @@ function themeSwitcher(e) {
   }
 }
 
-function addTodoElem(todoText) {
+function changeActiveStatus(elem) {
+  //  toggle the check class on elements and the set active variable in the element array to correct value
+  elem.classList.toggle("todo__elem--checked");
+  let isActive = true;
+
+  if (elem.classList.contains("todo__elem--checked")) {
+    isActive = false;
+  }
+}
+
+function addTodoElem(todoText, isNew = true) {
   const todoEl = document.createElement("li");
   todoEl.classList.add("todo__elem");
   document.body.appendChild(todoEl);
@@ -49,10 +61,27 @@ function addTodoElem(todoText) {
   <p>${todoText}</p><button class="btn todo__delete"><img src="/images/icon-cross.svg" /></button>`;
   todoList.appendChild(todoEl);
 
-  if (){
+  // push to array of elements to keep track of them if it is new and refresh the localstorage with the new element
+  // if the element is new, we store the todoEL DOM element in the element object before pushing, else, we update it
+
+  if (isNew) {
+    todoArray.push({
+      active: true,
+      content: todoText,
+      DOMelem: todoEl,
+      id: todoId++
+    });
+  }
+
+  //Delete the todoEl from the list
   const todoDelete = todoEl.querySelector(".todo__delete");
   todoDelete.addEventListener("click", () => {
     todoList.remove(todoEl);
   });
+
+  //Add checkmark to the item from the list
+  const todoCheck = document.querySelector("todo__check");
+  todoCheck.addEventListener("click", changeActiveStatus);
 }
-}
+
+console.log(changeActiveStatus);
