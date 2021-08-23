@@ -145,3 +145,27 @@ function addTodoElem(todoText, isNew = true) {
   const todoCheck = document.querySelector(".todo__check");
   todoCheck.addEventListener("click", changeActiveStatus);
 }
+
+function init() {
+  const starterList = [
+    "Complete online JavaScript course",
+    "Jog around the park 3x",
+    "10 minutes meditation",
+    "Read for 1 hour",
+    "Pick up groceries",
+    "Complete Todo App on Frontnd Mentor",
+  ];
+
+  if (
+    localStorage.getItem("isFirstVisit") === null ||
+    localStorage.getItem("isFirstVisit") === false
+  ) {
+    localStorage.setItem("isFirstVisit", true);
+    starterList.forEach((item) => {
+      addTodoElem(item);
+    });
+    changeActiveStatus(todoArray[0].DOMelem);
+  } else {
+    getLocalStorage();
+  }
+}
