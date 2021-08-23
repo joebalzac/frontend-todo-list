@@ -17,7 +17,7 @@ const themeLogo = document.querySelectorAll(".btn--theme img");
 
 themeToggle.addEventListener("click", themeSwitcher);
 
-todoInput.addEventListener("keyup", e => {
+todoInput.addEventListener("keyup", (e) => {
   if (e.key === "Enter") {
     if (e.target.value !== "") {
       // event listener adds a todo elem on key press
@@ -33,7 +33,7 @@ todoInput.addEventListener("keyup", e => {
 
 function themeSwitcher(e) {
   console.log(e.target);
-  themeLogo.forEach(logo => logo.classList.toggle("todo__elem--hide"));
+  themeLogo.forEach((logo) => logo.classList.toggle("todo__elem--hide"));
 
   if (!document.body.dataset.theme) {
     document.body.dataset.theme = "dark-theme";
@@ -69,7 +69,7 @@ function addTodoElem(todoText, isNew = true) {
       active: true,
       content: todoText,
       DOMelem: todoEl,
-      id: todoId++
+      id: todoId++,
     });
   }
 

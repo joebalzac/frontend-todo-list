@@ -46,13 +46,6 @@
     border: 1px solid $darkGrayishBlue;
   }
 
-  &__check {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: border 0.5s ease-in-out;
-  }
-
   &__input {
     background: transparent;
     border: none;
@@ -138,15 +131,6 @@
     p {
       flex: 1;
       margin-left: 2rem;
-    }
-
-    &__elem--checked p {
-      color: #d1d2da;
-      text-decoration: line-through;
-    }
-
-    &__check &__elem--checked {
-      background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
     }
   }
 

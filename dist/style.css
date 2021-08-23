@@ -98,10 +98,6 @@ body {
   border: 1px solid #9394a5;
 }
 
-.todo__check:focus {
-  background: linear-gradient(#57ddff, #c058f3);
-}
-
 .todo__input {
   background: transparent;
   border: none;
