@@ -9,7 +9,7 @@ const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
 const itemsLeft = document.querySelector("#items-left");
 const todoFilters = document.querySelectorAll("input[name='filter']");
-const btnClear = document.querySelector("#clearCompleted");
+const btnClear = document.querySelector("#clear-completed");
 
 const themeToggle = document.querySelector("#theme-toggle");
 const themeLogo = document.querySelectorAll(".btn--theme img");
@@ -17,7 +17,7 @@ const themeLogo = document.querySelectorAll(".btn--theme img");
 /************EVENT LISTENERS*************/
 
 btnClear.addEventListener("click", () => {
-  const toRemove = todoArray.filter((obj) => obj.active === false);
+  const toRemove = todoArray.filter(obj => obj.active === false);
 
   if (
     toRemove.length > 0 &&
@@ -25,7 +25,7 @@ btnClear.addEventListener("click", () => {
       `You are about to remove ${toRemove.length} completed task. Are  you sure?`
     )
   ) {
-    toRemove.forEach((elem) => {
+    toRemove.forEach(elem => {
       removeElem(elem.DOMelem);
     });
   }
@@ -33,7 +33,7 @@ btnClear.addEventListener("click", () => {
 
 themeToggle.addEventListener("click", themeSwitcher);
 
-todoInput.addEventListener("keyup", (e) => {
+todoInput.addEventListener("keyup", e => {
   if (e.key === "Enter") {
     if (e.target.value !== "") {
       // event listener adds a todo elem on key press
@@ -46,7 +46,7 @@ todoInput.addEventListener("keyup", (e) => {
   }
 });
 
-todoFilters.forEach((filter) => {
+todoFilters.forEach(filter => {
   //event listener on radio button change that controls the filters
   filter.addEventListener("change", filterCallback);
 });
@@ -55,7 +55,7 @@ todoFilters.forEach((filter) => {
 
 function themeSwitcher(e) {
   console.log(e.target);
-  themeLogo.forEach((logo) => logo.classList.toggle("todo__elem--hide"));
+  themeLogo.forEach(logo => logo.classList.toggle("todo__elem--hide"));
 
   if (!document.body.dataset.theme) {
     document.body.dataset.theme = "dark-theme";
@@ -97,6 +97,76 @@ function completedCB() {
     }
   });
 }
+// check all items in array and chose to display add or remove class that displays the elems if it is active or not
+function allCB() {
+  todoArray.forEach(function (arrayObj) {
+    if (arrayObj.DOMelem.classList.contains("todo__elem--hide")) {
+      arrayObj.DOMelem.classList.remove("todo__elem--hide");
+    }
+  });
+}
+
+// check all items in array and chose to display add or remove class that displays the elems if it is active or not
+function activeCB() {
+  todoArray.forEach(function (arrayObj) {
+    if (
+      arrayObj.active &&
+      arrayObj.DOMelem.classList.contains("todo__elem--hide")
+    ) {
+      arrayObj.DOMelem.classList.remove("todo__elem--hide");
+    } else if (
+      arrayObj.active === false &&
+      !arrayObj.DOMelem.classList.contains("todo__elem--hide")
+    ) {
+      arrayObj.DOMelem.classList.add("todo__elem--hide");
+    }
+  });
+}
+
+/******************************/
+/***  FUNCTIONS             ***/
+/******************************/
+
+/**  MISCELLANEOUS  FUNCTIONS**/
+/******************************/
+
+function updateActiveCount() {
+  // counts the number of active elements in global array and sets the counts
+  let count = todoArray.reduce((count, todoObj) => {
+    if (todoObj.active) count++;
+    return count;
+  }, 0);
+  itemsLeft.innerText = count;
+}
+
+function updateCurrentId() {
+  // need to make sure the current ID is up to date after deletion
+  if (!todoArray.length) {
+    todoId = 0;
+  } else {
+    todoId = todoArray[todoArray.length - 1].id + 1;
+  }
+}
+
+/**  localSTorage functions **/
+/******************************/
+
+function getLocalStorage() {
+  //update active count in case local is empty
+
+  //if localstorage variable doesn't exist, create it
+  if (localStorage.getItem(LOCAL_TODOS) === null) {
+    localStorage.setItem(LOCAL_TODOS, JSON.stringify([]));
+  } else if (JSON.parse(localStorage.getItem(LOCAL_TODOS)).length) {
+    //else if storage exists and is not empty, load the todos from localstorage and add them to the DOM
+    todoArray = JSON.parse(localStorage.getItem(LOCAL_TODOS));
+    todoArray.forEach(todoElem => {
+      if (todoID < +todoElem.id) todoId = +todoElem.id;
+      addTodoElem(todoElem.content, false);
+    });
+    todoId++;
+  }
+}
 
 function changeActiveStatus(elem) {
   //  toggle the check class on elements and the set active variable in the element array to correct value
@@ -107,7 +177,7 @@ function changeActiveStatus(elem) {
     isActive = false;
   }
 
-  todoArray.forEach((arrayObj) => {
+  todoArray.forEach(arrayObj => {
     if (arrayObj.id === +elem.id) arrayObj.active = isActive;
   });
 
@@ -131,7 +201,7 @@ function addTodoElem(todoText, isNew = true) {
       active: true,
       content: todoText,
       DOMelem: todoEl,
-      id: todoId++,
+      id: todoId++
     });
   }
 
@@ -153,7 +223,7 @@ function init() {
     "10 minutes meditation",
     "Read for 1 hour",
     "Pick up groceries",
-    "Complete Todo App on Frontnd Mentor",
+    "Complete Todo App on Frontnd Mentor"
   ];
 
   if (
@@ -161,7 +231,7 @@ function init() {
     localStorage.getItem("isFirstVisit") === false
   ) {
     localStorage.setItem("isFirstVisit", true);
-    starterList.forEach((item) => {
+    starterList.forEach(item => {
       addTodoElem(item);
     });
     changeActiveStatus(todoArray[0].DOMelem);
